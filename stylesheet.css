@@ -61,7 +61,7 @@ h1 {
 }
 .project img {
     width: 30vw;
-    height: 30vh;
+    height: auto;
 }
 
 .hiddenClass {
@@ -95,4 +95,8 @@ a:hover::after {
 
 p{
     width: 30vw;
+}
+
+.project div{
+    font-size: 1.7em;
 }
