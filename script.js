@@ -1,3 +1,55 @@
+const header = document.querySelector("header");
+const loadNumber = document.querySelector(".loadNumber");
+const loadSymbol = document.querySelector(".loadSymbol")
+const load = document.querySelector(".load")
+
+function Startupanimation(){
+    console.log("loaded")
+    header.classList.remove("loading")
+    
+    
+    header.classList.add("startup")
+
+}
+/* addEventListener("DOMContentLoaded", Startupanimation()); */
+
+
+let count = 0;
+const intervalId = setInterval(() => {
+  count++;
+  loadNumber.textContent = `${count}`; 
+
+  if (count === 100) {
+    clearInterval(intervalId); 
+    loadNumber.classList.add("textremove")
+    loadSymbol.classList.add("textremove")
+    // Delay before removing and adding classes
+    
+    setTimeout(() => {
+        loadNumber.classList.remove("textremove")
+      header.classList.remove("loading");
+      header.classList.add("startup");
+    }, 1000);
+
+    console.log('Loading complete!'); 
+  }
+}, 20); 
+
+// eventlisterner voor work pagina // 
+
+/* document.querySelectorAll("li").forEach() kijken of ik foreach beter kan gebruiken dan wat hier nu onder staat */
+const workNav = document.querySelector(".workNav")
+const main = document.querySelector("main")
+
+workNav.addEventListener("click", () => {
+    header.classList.add("hidden")
+    main.classList.remove("work")
+
+})
+
+
+//////////////////////// Work pagina setupshit //////////////////////
+
 const track = document.getElementById("image-track");
 
 // Initialize dataset values
@@ -63,3 +115,4 @@ function handleClick(event) {
 images.forEach(image => {
     image.addEventListener("click", handleClick);
 });
+//////////////////////// Work pagina setupshit //////////////////////
