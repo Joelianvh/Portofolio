@@ -14,7 +14,6 @@ if (loadNumber && loadSymbol && load) {
         header.classList.remove("loading");
         header.classList.add("header-min");
         if (main) main.classList.remove("work");
-        console.log("Loading skipped (already visited)");
     } else {
         const intervalId = setInterval(() => {
             count++;
@@ -32,190 +31,137 @@ if (loadNumber && loadSymbol && load) {
                     if (main) main.classList.remove("work");
                     sessionStorage.setItem("visited", "true");
                 }, 800);
-
-                console.log('Loading complete!');
             }
         }, 20);
     }
 } else {
-    // op andere pagina's meteen header-min tonen
     if (header) {
         header.classList.remove("loading");
         header.classList.add("header-min");
     }
 }
 
-// eventlistener voor work knop in nav // 
-if (workNav && main) {
-    workNav.addEventListener("click", (e) => {
-        if (track) {
-            e.preventDefault()
+//////////////////////// Hamburger Menu & Project Overlay //////////////////////
 
-            // als de track verborgen is (project details open), ga terug naar gallery track met animatie
-            if (track.classList.contains("hiddenClass")) {
-                const activeProject = document.querySelector(".project:not(.hiddenClass)");
-                if (activeProject) {
-                    activeProject.classList.add("exiting");
-                    setTimeout(() => {
-                        document.querySelectorAll(".project").forEach(section => {
-                            section.classList.add("hiddenClass");
-                            section.classList.remove("exiting");
-                        });
-                        track.classList.remove("hiddenClass");
-                        requestAnimationFrame(() => {
-                            track.classList.remove("leaving");
-                        });
-                    }, 300);
-                } else {
-                    track.classList.remove("hiddenClass");
-                    track.classList.remove("leaving");
-                }
-                return;
-            }
+function initHamburgerMenu() {
+    if (!header) return;
 
-            header.classList.remove("startup");
-            header.classList.add("header-min");
-            main.classList.remove("work");
-        }
-    })
-}
-
-
-//////////////////////// Work pagina setupshit //////////////////////
-
-if (track) {
-    // Initialize dataset values
-    track.dataset.mouseDownAt = "0";
-    track.dataset.prevPercentage = "0";
-    track.dataset.percentage = "0";
-
-    window.onmousemove = e => {
-        handleMovement(e.clientX);
-    };
-
-    window.ontouchmove = e => {
-        handleMovement(e.touches[0].clientX);
-    };
-
-    window.onmousedown = e => {
-        track.dataset.mouseDownAt = e.clientX;
-    };
-
-    window.onmouseup = () => {
-        track.dataset.mouseDownAt = "0";
-        track.dataset.prevPercentage = track.dataset.percentage;
-    };
-
-    window.ontouchstart = e => {
-        track.dataset.mouseDownAt = e.touches[0].clientX;
-    };
-
-    window.ontouchend = () => {
-        track.dataset.mouseDownAt = "0";
-        track.dataset.prevPercentage = track.dataset.percentage;
-    };
-
-    // trackpad en mousewheel scroll support //
-    window.addEventListener("wheel", (e) => {
-        if (track.classList.contains("hiddenClass")) return;
-
-        // bereken nieuwe percentage op basis van scroll delta
-        const scrollSpeed = 0.05;
-        const delta = e.deltaY || e.deltaX;
-
-        const currentPercentage = parseFloat(track.dataset.percentage) || 0;
-        const nextPercentage = currentPercentage - delta * scrollSpeed;
-
-        const minPercentage = -200; // Adjusted for 17 gallery cards
-        const maxPercentage = 0; // Adjust this value as needed for the right boundary
-
-        const clampedPercentage = Math.max(Math.min(nextPercentage, maxPercentage), minPercentage);
-
-        track.dataset.percentage = clampedPercentage; // Update the percentage
-        track.style.transform = `translate(${clampedPercentage}%, -50%)`;
-
-        // Adjust the objectPosition of each image
-        for (const image of track.getElementsByClassName("image")) {
-            image.style.objectPosition = `${clampedPercentage + 100}% 50%`;
-        }
-    });
-
-    const imageContainers = document.querySelectorAll(".image-container");
-
-    function handleClick(event) {
-        if (!track) return;
-
-        const targetClass = event.currentTarget.classList[1];
-        const sectionToShow = document.querySelector(`.${targetClass}-project`);
-
-        // 1. Speel leaving animatie af op de horizontal image track
-        track.classList.add("leaving");
-
-        // 2. Na de leaving animatie, verberg track en toon het gekozen project
-        setTimeout(() => {
-            track.classList.add("hiddenClass");
-
-            document.querySelectorAll(".project").forEach(section => {
-                section.classList.add("hiddenClass");
-                section.classList.remove("exiting");
-            });
-
-            if (sectionToShow) {
-                sectionToShow.classList.remove("hiddenClass");
-                sectionToShow.scrollTop = 0;
-            }
-        }, 250);
-
-        console.log("Transitioning to project:", targetClass);
+    // Create Hamburger Button if not present
+    if (!document.getElementById("hamburger-btn")) {
+        const btn = document.createElement("button");
+        btn.id = "hamburger-btn";
+        btn.className = "hamburger-btn";
+        btn.setAttribute("aria-label", "Toggle Projects Menu");
+        btn.innerHTML = `<span class="bar"></span><span class="bar"></span><span class="bar"></span>`;
+        header.appendChild(btn);
     }
 
-    // Add event listeners for gallery cards
-    imageContainers.forEach(container => {
-        container.addEventListener("click", handleClick);
+    // Determine path prefix based on location
+    const path = window.location.pathname;
+    let prefix = "projects/";
+    if (path.includes("/projects/")) {
+        prefix = "";
+    } else if (path.includes("/about/")) {
+        prefix = "../projects/";
+    }
+
+    // Create Overlay Menu if not present
+    if (!document.getElementById("project-menu-overlay")) {
+        const overlay = document.createElement("div");
+        overlay.id = "project-menu-overlay";
+        overlay.className = "project-menu-overlay";
+        overlay.innerHTML = `
+            <div class="menu-container">
+                <div class="menu-header">
+                    <h2>All projects</h2>
+                    <button class="close-menu-btn" id="close-menu-btn" aria-label="Close Menu">&times;</button>
+                </div>
+                <div class="menu-sections">
+                    <div class="menu-group">
+                        <h3>Featured</h3>
+                        <ul>
+                            <li><a href="${prefix}dome-project.html">Dome Project</a></li>
+                            <li><a href="${prefix}akob-heart-project.html">Heartfall | AKOB x HVA</a></li>
+                            <li><a href="${prefix}8-survivors-game.html">8 Survivors Game</a></li>
+                            <li><a href="${prefix}immersive-escaperoom.html">Immersive Escaperoom</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-group">
+                        <h3>Immersive &amp; game design</h3>
+                        <ul>
+                            <li><a href="${prefix}projection-mapping.html">Projection Mapping</a></li>
+                            <li><a href="${prefix}woodworking.html">Woodworking</a></li>
+                            <li><a href="${prefix}ableton-sound-control.html">Ableton Sound Control</a></li>
+                            <li><a href="${prefix}interactive-sound-and-pose.html">Interactive Sound & Pose</a></li>
+                            <li><a href="${prefix}immersivelab-experience.html">Immersivelab Experience</a></li>
+                            <li><a href="${prefix}last-gnome-standing.html">Last Gnome Standing</a></li>
+                            <li><a href="${prefix}bootcamp-game.html">RocketJump</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-group">
+                        <h3>Earlier projects</h3>
+                        <ul>
+                            <li><a href="${prefix}ticking-time-trails.html">Ticking Time Trials</a></li>
+                            <li><a href="${prefix}devious-dungeon-dabloons.html">Devious Dungeon Dabloons</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+    }
+
+    const btn = document.getElementById("hamburger-btn");
+    const overlay = document.getElementById("project-menu-overlay");
+    const closeBtn = document.getElementById("close-menu-btn");
+
+    function toggleMenu() {
+        btn.classList.toggle("active");
+        overlay.classList.toggle("open");
+    }
+
+    if (btn) btn.onclick = toggleMenu;
+    if (closeBtn) closeBtn.onclick = toggleMenu;
+
+    overlay.onclick = (e) => {
+        if (e.target === overlay) toggleMenu();
+    };
+
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && overlay.classList.contains("open")) {
+            toggleMenu();
+        }
     });
+}
 
-    // Event listeners for "Other projects" cards at the bottom of case studies
-    document.querySelectorAll(".other-card").forEach(card => {
-        card.addEventListener("click", (e) => {
-            const targetProjectKey = e.currentTarget.dataset.project;
-            if (!targetProjectKey) return;
+initHamburgerMenu();
 
-            const currentActive = document.querySelector(".project:not(.hiddenClass)");
-            const sectionToShow = document.querySelector(`.${targetProjectKey}-project`);
+//////////////////////// Work Grid (vertical scroll) //////////////////////
 
-            if (currentActive && sectionToShow && currentActive !== sectionToShow) {
-                currentActive.classList.add("exiting");
-                setTimeout(() => {
-                    document.querySelectorAll(".project").forEach(sec => {
-                        sec.classList.add("hiddenClass");
-                        sec.classList.remove("exiting");
-                    });
-                    sectionToShow.classList.remove("hiddenClass");
-                    sectionToShow.scrollTop = 0;
-                }, 250);
-            }
+if (track) {
+    Array.from(track.children).forEach(container => {
+        container.addEventListener("click", () => {
+            const targetUrl = container.dataset.url;
+            if (!targetUrl) return;
+            track.classList.add("leaving");
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 250);
         });
     });
 }
 
-function handleMovement(clientX) {
-    if (!track || track.dataset.mouseDownAt === "0") return;
+// Restore the grid when coming back via the browser's back button (bfcache)
+window.addEventListener("pageshow", (e) => {
+    if (e.persisted && track) track.classList.remove("leaving");
+});
 
-    const mouseDelta = clientX - parseFloat(track.dataset.mouseDownAt);
-    const maxDelta = window.innerWidth / 2;
-
-    const percentage = (mouseDelta / maxDelta) * 100;
-    const nextPercentage = parseFloat(track.dataset.prevPercentage) + percentage;
-
-    const minPercentage = -200; // Adjusted for 17 gallery cards
-    const maxPercentage = 0;
-
-    const clampedPercentage = Math.max(Math.min(nextPercentage, maxPercentage), minPercentage);
-
-    track.dataset.percentage = clampedPercentage;
-    track.style.transform = `translate(${clampedPercentage}%, -50%)`;
-
-    for (const image of track.getElementsByClassName("image")) {
-        image.style.objectPosition = `${clampedPercentage + 100}% 50%`;
-    }
-}
+// "Other projects" cards at the bottom of case studies
+document.querySelectorAll(".other-card").forEach(card => {
+    card.addEventListener("click", (e) => {
+        const targetUrl = e.currentTarget.dataset.url;
+        if (targetUrl) {
+            window.location.href = targetUrl;
+        }
+    });
+});

@@ -1,46 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Me | Julian van Halteren</title>
-    <link rel="stylesheet" href="../stylesheet.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <header class="header-min">
-      <nav>
-        <ul>
-          <li>
-            <a href="../index.html" class="workNav">Work</a>
-          </li>
-          <li>
-            <a href="index.html" class="aboutNav">About</a>
-          </li>
-          <li>
-            <a href="../contact/index.html" class="contactNav">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
 
-    <main>
-      <section class="project">
-        <div>
-          <h2>About me</h2>
-          <p>
-            My name is Julian, I am currently in my first year of the study
-            CMD(communication and multimedia design) in Amsterdam. For contact
-            please use the provided email-adress below.
-          </p>
-          <span>Email: <strong><a href="mailto:Julian.halteren@hva.nl">Julian.halteren@hva.nl</a></strong></span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About & Contact | Julian van Halteren</title>
+  <meta name="description"
+    content="About Julian van Halteren: CMD student at HvA specialising in UI/UX, creative development, immersive installations, and game design. Open to internships and collaborations." />
+  <meta property="og:title" content="About & Contact | Julian van Halteren" />
+  <meta property="og:description"
+    content="CMD student at HvA specialising in UI/UX, creative development, immersive installations, and game design." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../stylesheet.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header class="header-min">
+    <nav>
+      <ul>
+        <li>
+          <a href="../index.html" class="workNav">Work</a>
+        </li>
+        <li>
+          <a href="index.html" class="aboutNav">About & Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="project">
+      <div class="project-content">
+        <!-- 1. Hero Block -->
+        <div class="project-hero">
+          <div class="hero-img-box">
+            <img src="../about/images/curling.jpeg" alt="Julian van Halteren" />
+          </div>
+          <div class="hero-details">
+            <h1>Julian van Halteren</h1>
+            <p class="pitch">Communication &amp; Multimedia Design (CMD) student in Amsterdam | UI/UX designer &amp;
+              creative developer</p>
+            <div class="meta-block">
+              <div class="meta-item">
+                <span class="meta-label">Location</span>
+                <span>Amsterdam, Netherlands</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Focus Areas</span>
+                <div class="tags">
+                  <span>UI/UX Design</span>
+                  <span>Front-end development</span>
+                  <span>Physical computing</span>
+                  <span>Game design &amp; C#</span>
+                </div>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Email</span>
+                <a href="mailto:julianvh10@gmail.com" class="project-link-btn">julianvh10@gmail.com</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <img src="../images/ikke.JPG" alt="Julian" />
-      </section>
-    </main>
 
-    <script src="../script.js"></script>
-  </body>
+        <!-- 2. About Me -->
+        <div class="project-row">
+          <div class="row-text">
+            <h3>About Me</h3>
+            <p>
+              I am Julian van Halteren, a Communication &amp; Multimedia Design (CMD) student at Hogeschool van
+              Amsterdam (HvA). I connect digital interfaces with physical and interactive experiences: web applications,
+              game mechanics and interactive installations.
+            </p>
+            <p>
+              Whether I am designing user flows in Figma, programming mechanics in Unity or wiring Arduino sensors, I
+              aim for experiences that are functional, accessible and easy to use.
+            </p>
+          </div>
+          <div class="row-img-box">
+            <img src="../about/images/colors.jpeg" alt="Julian working on creative tech" />
+          </div>
+        </div>
+
+        <!-- 3. Key Skills & Technologies -->
+        <div class="project-row row-reverse">
+          <div class="row-img-box">
+            <div class="contact-card-list">
+              <div class="contact-info-card">
+                <div>
+                  <strong>UI/UX &amp; prototyping</strong>
+                  <p style="margin:4px 0 0 0; color:#aaa; font-size:1.05rem;">Figma, Adobe CC, user research,
+                    wireframing, information architecture</p>
+                </div>
+              </div>
+              <div class="contact-info-card">
+                <div>
+                  <strong>Front-end development</strong>
+                  <p style="margin:4px 0 0 0; color:#aaa; font-size:1.05rem;">HTML5, CSS3, JavaScript (ES6+),
+                    Flexbox/Grid, responsive web design</p>
+                </div>
+              </div>
+              <div class="contact-info-card">
+                <div>
+                  <strong>Interactive tech &amp; games</strong>
+                  <p style="margin:4px 0 0 0; color:#aaa; font-size:1.05rem;">Unity &amp; C#, Xbox Kinect,
+                    TouchDesigner, Arduino, sensors, projection mapping</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row-text">
+            <h3>Skills</h3>
+            <p>
+              My skills cover the whole design process, from user research and wireframing to front-end development,
+              physical computing and hardware integration.
+            </p>
+            <div class="tags" style="margin-top: 10px;">
+              <span>Figma</span>
+              <span>HTML5 & CSS3</span>
+              <span>JavaScript</span>
+              <span>Unity / C#</span>
+              <span>TouchDesigner</span>
+              <span>Arduino</span>
+              <span>Xbox Kinect</span>
+              <span>Rapid prototyping</span>
+              <span>Sprint leadership</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Get in Touch & Contact Form -->
+        <div class="project-row">
+          <div class="row-text">
+            <h3>Get in touch</h3>
+            <p>
+              I am open to internships, freelance projects and collaborations, or just a chat about creative technology.
+            </p>
+            <div class="meta-block" style="margin-top: 15px;">
+              <div class="meta-item">
+                <span class="meta-label">Email address</span>
+                <a href="mailto:julianvh10@gmail.com"
+                  style="font-size: 1.3rem; font-weight: bold; color: #fff;">julianvh10@gmail.com</a>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">GitHub</span>
+                <a href="https://github.com/joelianvh" target="_blank" class="project-link-btn">github.com/joelianvh</a>
+              </div>
+            </div>
+          </div>
+          <div class="row-img-box"
+            style="aspect-ratio: auto; padding: 25px; box-sizing: border-box; display:flex; flex-direction:column; justify-content:center;">
+            <h4 style="margin:0 0 15px 0; font-size: 1.6rem; color: #fff;">Send a message</h4>
+            <form class="contact-form" id="contact-form">
+              <div class="form-group">
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Jane Doe" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Your email</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="e.g. jane@company.com"
+                  required />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" class="form-textarea"
+                  placeholder="Tell me about your project or question..." required></textarea>
+              </div>
+              <button type="submit" class="submit-btn" id="submit-btn">Send message</button>
+              <p id="form-success" style="display:none; color:#6eeda0; margin:8px 0 0; font-size:1rem;">&#10003; Message
+                sent! I'll get back to you soon.</p>
+              <p id="form-error" style="display:none; color:#ff7070; margin:8px 0 0; font-size:1rem;">&#x2717; Something
+                went wrong. Please email me directly.</p>
+            </form>
+            <script>
+              (function () {
+                const form = document.getElementById('contact-form');
+                const btn = document.getElementById('submit-btn');
+                const ok = document.getElementById('form-success');
+                const err = document.getElementById('form-error');
+                // Replace YOUR_FORM_ID below after signing up free at https://formspree.io
+                const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xwlpyyzv';
+                form.addEventListener('submit', async function (e) {
+                  e.preventDefault();
+                  btn.disabled = true;
+                  btn.textContent = (window.i18nT ? window.i18nT('Sending...') : 'Sending...');
+                  ok.style.display = 'none';
+                  err.style.display = 'none';
+                  try {
+                    const res = await fetch(FORMSPREE_ENDPOINT, {
+                      method: 'POST',
+                      headers: { 'Accept': 'application/json' },
+                      body: new FormData(form)
+                    });
+                    if (res.ok) {
+                      ok.style.display = 'block';
+                      form.reset();
+                    } else {
+                      err.style.display = 'block';
+                    }
+                  } catch (_) {
+                    err.style.display = 'block';
+                  } finally {
+                    btn.disabled = false;
+                    btn.textContent = (window.i18nT ? window.i18nT('Send message') : 'Send message');
+                  }
+                });
+              })();
+            </script>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="../script.js"></script>
+  <script src="../i18n.js"></script>
+</body>
+
 </html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Sound & Pose | Julian van Halteren</title>
+  <meta name="description" content="Interactive Sound & Pose: body-driven sound installation using MediaPipe pose detection and Web Audio API. Participants make music through movement alone." />
+  <meta property="og:title" content="Interactive Sound & Pose | Julian van Halteren" />
+  <meta property="og:description" content="Body-driven sound installation where participant poses trigger and modulate audio using MediaPipe computer vision and Web Audio API." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../stylesheet.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header class="header-min">
+    <nav>
+      <ul>
+        <li>
+          <a href="../index.html" class="workNav">Work</a>
+        </li>
+        <li>
+          <a href="../about/index.html" class="aboutNav">About & Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="project">
+
+      <div class="project-content">
+        <div class="project-hero">
+          <div class="hero-img-box">
+            <img src="../ImmersiveProjecten/interactive sound and pose thing/20251007_142150.jpg" alt="Interactive Sound & Pose Hero" />
+          </div>
+          <div class="hero-details">
+            <h1>Interactive Sound & Pose</h1>
+            <p class="pitch">A sound installation where visitors' poses and movements trigger and change audio, using computer vision to turn the body into an instrument.</p>
+            <div class="meta-block">
+              <div class="meta-item">
+                <span class="meta-label">My Role</span>
+                <span>Interaction designer &amp; CV developer</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Tech &amp; tools</span>
+                <div class="tags">
+                  <span>MediaPipe</span>
+                  <span>p5.js</span>
+                  <span>Pose detection</span>
+                  <span>Web Audio API</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="row-text">
+            <h3>Context &amp; problem</h3>
+            <p>Traditional music interfaces require technical knowledge. This project asked what happens if anyone can make music just by moving. The challenge was making pose detection expressive but accessible.</p>
+            <h3>Target audience</h3>
+            <p>Exhibition visitors, children and adults without a musical background, and researchers of embodied interaction.</p>
+          </div>
+          <div class="row-img-box">
+            <img src="../ImmersiveProjecten/interactive sound and pose thing/IMG-20251007-WA0013.jpg" alt="Interactive Sound setup" />
+          </div>
+        </div>
+
+        <div class="project-row row-reverse">
+          <div class="row-img-box">
+            <img src="../ImmersiveProjecten/interactive sound and pose thing/IMG-20251007-WA0017.jpg" alt="Interactive Sound & Pose demo" />
+          </div>
+          <div class="row-text">
+            <h3>Features</h3>
+            <p>Real-time 33-point pose tracking, mapping gestures to audio parameters (pitch, volume, effects), a visual feedback overlay and low-latency audio triggering with the Web Audio API.</p>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <div class="row-text">
+            <h3>Process</h3>
+            <p>Used MediaPipe Pose to track keypoints, mapped joint angles and distances to musical parameters, and tuned sensitivity by observing users, to balance precision and playfulness.</p>
+          </div>
+          <div class="row-img-box">
+            <img src="../ImmersiveProjecten/interactive sound and pose thing/IMG-20251013-WA0010.jpg" alt="Interactive Sound testing" />
+          </div>
+        </div>
+
+        <div class="project-takeaways">
+          <h3>Takeaways</h3>
+          <p>Designing the body as an interface requires empathy for how people naturally move. Over-engineering gesture detection makes interactions feel clinical instead of expressive.</p>
+        </div>
+
+        <div class="other-projects-section">
+          <h3>Other projects</h3>
+          <div class="other-projects-grid">
+            <div class="other-card" data-project="thirteenth" data-url="ableton-sound-control.html">
+              <img src="../ImmersiveProjecten/ableton sound control interaction/20251001_142046.jpg" alt="Ableton Sound Control" />
+              <div class="other-card-title">Ableton Sound Control</div>
+            </div>
+            <div class="other-card" data-project="fifteenth" data-url="immersivelab-experience.html">
+              <img src="../ImmersiveProjecten/Immerisvelab experience/IMG-20251014-WA0049.jpg" alt="Immersivelab Experience" />
+              <div class="other-card-title">Immersivelab Experience</div>
+            </div>
+            <div class="other-card" data-project="eleventh" data-url="projection-mapping.html">
+              <img src="../ImmersiveProjecten/projection mapping/20250922_132525.jpg" alt="Projection Mapping" />
+              <div class="other-card-title">Projection Mapping</div>
+            </div>
+            <div class="other-card" data-project="eighth" data-url="last-gnome-standing.html">
+              <img src="../AGD_projecten/last gnome standing/20260209_152759.jpg" alt="Last Gnome Standing" />
+              <div class="other-card-title">Last Gnome Standing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </section>
+  </main>
+
+  <script src="../script.js"></script>
+  <script src="../i18n.js"></script>
+</body>
+
+</html>
